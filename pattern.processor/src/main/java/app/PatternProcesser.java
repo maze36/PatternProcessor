@@ -11,6 +11,7 @@ import model.GeometryBuilder;
 import model.concaveHull.ConcaveHull;
 import model.concaveHull.Point;
 import model.data.FishingGround;
+import view.MapView;
 
 public class PatternProcesser {
 
@@ -24,15 +25,18 @@ public class PatternProcesser {
 				+ "* Starting Pattern Processor *\n"
 				+ "******************************");
 		
-		ArrayList<FishingGround> fishingGrounds = CSVReader.readFishingGrounds("input");
-		ArrayList<Point> points = CSVReader.readingTrackData("input/track/track.csv");
-		ConcaveHull concaveHulle = new ConcaveHull();
+		MapView view = new MapView();
+		view.displayMap();
 		
-		ArrayList<Point> result = concaveHulle.calculateConcaveHull(points, 3);
-		
-		Geometry geometry = GeometryBuilder.getInstance().buildGeometry(result);
-		
-		System.out.println();
+//		ArrayList<FishingGround> fishingGrounds = CSVReader.readFishingGrounds("input");
+//		ArrayList<Point> points = CSVReader.readingTrackData("input/track/track.csv");
+//		ConcaveHull concaveHulle = new ConcaveHull();
+//		
+//		ArrayList<Point> result = concaveHulle.calculateConcaveHull(points, 3);
+//		
+//		Geometry geometry = GeometryBuilder.getInstance().buildGeometry(result);
+//		
+//		System.out.println();
 
 	}
 
