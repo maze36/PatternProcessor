@@ -3,9 +3,11 @@ package app;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
 import input.CSVReader;
+import model.GeometryBuilder;
 import model.concaveHull.ConcaveHull;
 import model.concaveHull.Point;
 import model.data.FishingGround;
@@ -28,11 +30,9 @@ public class PatternProcesser {
 		
 		ArrayList<Point> result = concaveHulle.calculateConcaveHull(points, 3);
 		
-		GeometryFactory factory = new GeometryFactory();
+		Geometry geometry = GeometryBuilder.getInstance().buildGeometry(result);
 		
-		
-		
-		System.out.println(result.size());
+		System.out.println();
 
 	}
 
