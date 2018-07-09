@@ -4,11 +4,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
-import javafx.util.Pair;
+import org.geotools.filter.expression.ThisPropertyAccessorFactory;
+
+import app.PatternProcesser;
+import javafx.util.*;
+
 
 public class ConcaveHull {
 
+	final static Logger logger = Logger.getLogger(ConcaveHull.class.getName());
+	
 	private Double euclideanDistance(Point a, Point b) {
 		return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
 	}
@@ -131,6 +138,8 @@ public class ConcaveHull {
 
 	public ArrayList<Point> calculateConcaveHull(ArrayList<Point> pointArrayList, Integer k) {
 
+		logger.info("Building concave hull for " + pointArrayList.size() + " and k=" + k);
+		
 		// the resulting concave hull
 		ArrayList<Point> concaveHull = new ArrayList<>();
 
@@ -223,8 +232,10 @@ public class ConcaveHull {
 
 		// if not all points inside - try again
 		if (!insideCheck) {
+			logger.info("trying again...");
 			return calculateConcaveHull(pointArrayList, k + 1);
 		} else {
+			logger.info("Returning concave hull with " + concaveHull.size() + " points");
 			return concaveHull;
 		}
 

@@ -10,8 +10,8 @@ public class FishingGround {
 
 	private String name;
 
-	public FishingGround(ArrayList<Point> points, String name) {
-		this.setPoints(points);
+	public FishingGround(String name) {
+		this.points = new ArrayList<Point>();
 		this.setName(name);
 	}
 
@@ -29,6 +29,15 @@ public class FishingGround {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public boolean addPoint(Point point) {
+		if(this.points != null) {
+			return this.points.add(point);
+		} else {
+			this.points = new ArrayList<>();
+			return this.points.add(point);
+		}
 	}
 
 }
